@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 package implementqueueusingstack;
-
 import java.util.Scanner;
 import java.util.Stack;
-
 /**
  *
  * @author Muzammil
@@ -16,7 +14,11 @@ public class ImplementQueueUsingStack extends Stack<Integer>{
     /**
      * @param args the command line arguments
      */
-    Stack<Integer> stack=new Stack<>();
+    Stack<Integer> stack;
+    ImplementQueueUsingStack()
+    {
+        stack=new Stack<>();
+    } 
     public static void main(String[] args) {
         // TODO code application logic here
         ImplementQueueUsingStack queue=new ImplementQueueUsingStack();
@@ -30,34 +32,33 @@ public class ImplementQueueUsingStack extends Stack<Integer>{
              {
                  case 1:
                      System.out.println("enter the value");
-                     queue.enQueue(sc.nextInt(),queue);
+                     queue.enQueue(sc.nextInt());
                      break;
                  case 2:
-                     System.out.println(queue.deQueue(queue)+" is the deQueue value from the queue");
+                     System.out.println(queue.deQueue()+" is the deQueue value from the queue");
                      break;
                  case 3:
-                     System.exit(0);
-                             
+                     System.exit(0);              
              }
         }
     }
-    public void enQueue(int item,ImplementQueueUsingStack queue)
+    public void enQueue(int item)
     {
-        if(queue.isEmpty())
+        if(this.isEmpty())
         {
 //            System.out.println("hhhhh");
           stack.push(item);  
         }
         else
         {
-            while(!queue.isEmpty())
+            while(!this.isEmpty())
             {
-                stack.push(queue.pop());
+                stack.push(this.pop());
             }
             stack.push(item);
         } 
     }
-    public int deQueue(ImplementQueueUsingStack queue) {
+    public int deQueue() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         if(stack.isEmpty())
         {
@@ -68,12 +69,12 @@ public class ImplementQueueUsingStack extends Stack<Integer>{
         {
             while(!stack.isEmpty())
             {
-               queue.push(stack.pop());
+               this.push(stack.pop());
             }
-            int k=queue.pop();
-            while(!queue.isEmpty())
+            int k=this.pop();
+            while(!this.isEmpty())
             {
-               stack.push(queue.pop());
+               stack.push(this.pop());
             }
             return k;
         }
